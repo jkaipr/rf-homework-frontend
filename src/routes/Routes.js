@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import {
   Route,
@@ -17,7 +18,7 @@ const Routes = () => {
   };
   return (
     <ReactRouterRoutes>
-      <Route index element={<TestSuites />} />
+      <Route index element={<TestSuites onEditTestSuite={onEditTestSuite} />} />
       <Route
         path="/test_suites"
         element={<TestSuites onEditTestSuite={onEditTestSuite} />}
