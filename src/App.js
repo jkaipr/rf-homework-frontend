@@ -1,12 +1,15 @@
+import { BrowserRouter } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
+
+import Routes from './routes/Routes';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <ChakraProvider>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </ChakraProvider>
   );
 }
 
