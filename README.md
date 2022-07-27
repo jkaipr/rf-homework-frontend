@@ -92,3 +92,7 @@ You can use any UI frameworks of your choosing (or none). There is a tiny amount
 The boilerplate code provided is a heavily stripped down version of a [create-react-app](https://create-react-app.dev/) starter project.
 
 The api server will be accessible at localhost port 3456
+
+## Running tests
+
+`yarn test` runs the tests.
