@@ -27,16 +27,19 @@ const TestSuiteForm = ({ testSuite }) => {
         as="form"
         onSubmit={(ev) => {
           ev.preventDefault();
-          console.log({
-            id: testSuite.id,
-            test_suite_name: suiteName,
-            test_plans: testPlans,
-          });
+          console.log(
+            JSON.stringify({
+              id: testSuite.id,
+              test_suite_name: suiteName,
+              test_plans: testPlans,
+            })
+          );
         }}
       >
         <FormControl>
           <FormLabel>Test suite name</FormLabel>
           <Input
+            data-testid="testSuiteName"
             isRequired
             onChange={({ target: { value } }) => setSuiteName(value)}
             type="text"
@@ -45,12 +48,13 @@ const TestSuiteForm = ({ testSuite }) => {
         </FormControl>
         {testPlans.map((testPlan, idx) => {
           return (
-            <>
-              <FormControl key={idx}>
+            <Box key={idx}>
+              <FormControl>
                 <FormLabel fontSize="lg" mt={4}>
                   Test plan name
                 </FormLabel>
                 <Input
+                  data-testid="testName"
                   isRequired
                   onChange={({ target: { value } }) => {
                     setTestPlans((prevTests) => {
@@ -66,6 +70,7 @@ const TestSuiteForm = ({ testSuite }) => {
               <FormControl>
                 <FormLabel>Browser</FormLabel>
                 <RadioGroup
+                  data-testid="testBrowser"
                   onChange={(newBrowser) => {
                     setTestPlans((prevTests) => {
                       const tests = [...prevTests];
@@ -86,6 +91,7 @@ const TestSuiteForm = ({ testSuite }) => {
               <FormControl>
                 <FormLabel>Instruction count</FormLabel>
                 <Input
+                  data-testid="testInstructionCount"
                   min={1}
                   onChange={({ target: { value } }) => {
                     setTestPlans((prevTests) => {
@@ -99,6 +105,7 @@ const TestSuiteForm = ({ testSuite }) => {
                 />
               </FormControl>
               <Button
+                data-testid="removeTest"
                 isDisabled={testPlans.length === 1}
                 onClick={() => {
                   setTestPlans((prevTests) => {
@@ -110,10 +117,11 @@ const TestSuiteForm = ({ testSuite }) => {
               >
                 Remove test
               </Button>
-            </>
+            </Box>
           );
         })}
         <Button
+          data-testid="addTest"
           onClick={() => {
             setTestPlans((prevTests) => {
               const tests = [...prevTests];
@@ -128,7 +136,9 @@ const TestSuiteForm = ({ testSuite }) => {
         >
           Add new test
         </Button>
-        <Button type="submit">Submit</Button>
+        <Button data-testid="submitForm" type="submit">
+          Submit
+        </Button>
       </VStack>
     </Flex>
   );

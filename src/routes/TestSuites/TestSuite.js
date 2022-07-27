@@ -17,7 +17,6 @@ const TestSuite = ({ onEditTestSuite, testSuite }) => {
       <AccordionButton p={2}>
         <AccordionIcon />
         {testSuite.test_suite_name}
-
         <Text ml="auto">
           {testSuite.test_plans.length}{' '}
           {testSuite.test_plans.length > 1 ? 'tests' : 'test'}
